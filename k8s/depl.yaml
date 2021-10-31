@@ -20,4 +20,7 @@ spec:
       containers:
       - image: nginx
         name: reg
-status: {}
+        ports:
+        - containerPort: 80
+
+
