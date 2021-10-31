@@ -1,16 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: srv
   name: srv
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: srv
-  strategy: {}
   template:
     metadata:
       labels:
