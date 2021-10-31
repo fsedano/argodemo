@@ -1,23 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  creationTimestamp: null
   labels:
-    app: nginx1
-  name: nginx1
+    app: srv
+  name: srv
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: nginx1
+      app: srv
   strategy: {}
   template:
     metadata:
       labels:
-        app: nginx1
+        app: srv
     spec:
       containers:
       - image: nginx
-        name: nginx1
+        name: srv
         ports:
         - containerPort: 80
 
