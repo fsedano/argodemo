@@ -5,7 +5,7 @@ metadata:
     app: srv
   name: srv
 spec:
-  replicas: 100
+  replicas: 1000
   selector:
     matchLabels:
       app: srv
