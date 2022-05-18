@@ -9,10 +9,7 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     chart: kafka
     targetRevision: 16.2.13
-    helm:
-      values: |
-        image:
-          tag: 1.10.10-debian-10-r0
+    helm: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: app1demo
