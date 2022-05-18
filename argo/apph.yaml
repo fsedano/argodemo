@@ -15,4 +15,5 @@ spec:
     namespace: app1demo
   syncPolicy:
     automated:
-      selfHeal: false
+      selfHeal: true
+      prune: true
