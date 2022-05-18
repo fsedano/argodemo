@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: airflow
-    targetRevision: 6.1.1
+    targetRevision: 12.3.0
     helm:
       values: |
         image:
