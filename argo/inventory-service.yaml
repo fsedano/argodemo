@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api_service
+  namespace: argocd
+spec:
+  destination:
+    namespace: app1demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: argo
+    repoURL: https://wwwin-github.cisco.com/ngdevx-taas/laasv2_service_api_service.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
