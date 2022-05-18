@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: airflow
-  namespace: ops
+  namespace: argocd
 spec:
   project: default
   source:
@@ -15,7 +15,7 @@ spec:
           tag: 1.10.10-debian-10-r0
   destination:
     server: https://kubernetes.default.svc
-    namespace: ops
+    namespace: app1demo
   syncPolicy:
     automated:
       selfHeal: false
