@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+  namespace: argocd
+spec:
+  destination:
+    namespace: app1demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: helm/jaeger-operator
+    repoURL: https://wwwin-github.cisco.com/ngdevx-taas/laasv2_e2e.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
