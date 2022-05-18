@@ -16,7 +16,7 @@ spec:
         app: nginx1
     spec:
       containers:
-      - image: nginx
+      - image: dockerhub.cisco.com/docker.io/nginx
         name: nginx1
         ports:
         - containerPort: 80

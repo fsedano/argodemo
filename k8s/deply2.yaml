@@ -15,7 +15,7 @@ spec:
         app: srv
     spec:
       containers:
-      - image: nginx
+      - image: dockerhub.cisco.com/docker.io/nginx
         name: srv
         ports:
         - containerPort: 80
