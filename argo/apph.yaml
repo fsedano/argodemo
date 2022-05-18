@@ -7,8 +7,8 @@ spec:
   project: default
   source:
     repoURL: https://charts.bitnami.com/bitnami
-    chart: airflow
-    targetRevision: 12.3.0
+    chart: kafka
+    targetRevision: 16.2.13
     helm:
       values: |
         image:
