@@ -1,0 +1,32 @@
+{{ if .Values.enableTracing }}
+---
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: jaeger-e2e
+spec:
+  strategy: allInOne
+  agent:
+    resources:
+      requests:
+        memory: "100Mi"
+        cpu: "0.1"
+      limits:
+        memory: "100Mi"
+        cpu: "0.1"
+  resources:
+    requests:
+      memory: "1024Mi"
+      cpu: "0.5"
+    limits:
+      memory: "1024Mi"
+      cpu: "0.5"
+  allInOne:
+    image: dockerhub.cisco.com/docker.io/jaegertracing/all-in-one:latest
+    options:
+      query.base-path: /{{ .Values.appPrefix }}/{{ .Values.environmentId }}/jaeger
+  storage:
+    type: memory
+  ingress:
+    enabled: false
+{{ end }}

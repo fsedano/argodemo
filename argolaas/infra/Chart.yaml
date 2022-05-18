@@ -1,0 +1,8 @@
+apiVersion: v2
+name: app1
+type: application
+version: 1.0.0
+dependencies:
+- name: infra
+  version: 1.0.0
+  repository: "file://../charts/infra"

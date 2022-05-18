@@ -1,0 +1,52 @@
+apiVersion: kubegres.reactive-tech.io/v1
+kind: Kubegres
+metadata:
+  labels:
+    app: postgres
+  name: postgres
+spec:
+   replicas: 1
+   image: harbor-devx-swiss.cisco.com/laasv2/postgres:14
+   resources:
+    limits:
+      cpu: "2"
+      memory: "2048Mi"
+    requests:
+      cpu: "2"
+      memory: "2048Mi"
+   customConfig: postgres-wal-conf
+   database:
+      size: 2Gi
+      storageClassName: {{ .Values.pgStorageClass | quote }}
+   env:
+      - name: POSTGRES_PASSWORD
+        valueFrom:
+           secretKeyRef:
+              name: postgres-secret
+              key: superUserPassword
+      - name: POSTGRES_REPLICATION_PASSWORD
+        valueFrom:
+           secretKeyRef:
+              name: postgres-secret
+              key: replicationUserPassword
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-wal-conf
+data:
+  postgres.conf: |
+    # Replication configs
+    listen_addresses = '*'
+    wal_level = logical
+    max_wal_senders = 4
+    max_replication_slots = 1000
+    max_connections = 100
+    shared_buffers = 128MB
+    max_slot_wal_keep_size = 100MB
+
+    # Logging
+    log_destination = 'stderr'
+    logging_collector = off
+    log_directory = 'pg_log'
+    log_filename= 'postgresql-%Y-%m-%d_%H%M%S.log'

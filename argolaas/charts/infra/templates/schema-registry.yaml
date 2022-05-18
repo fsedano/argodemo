@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: laasv2-schema-registry
+  name: laasv2-schema-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laasv2-schema-registry
+  template:
+    metadata:
+      labels:
+        app: laasv2-schema-registry
+    spec:
+{{ if .Values.useImagePullSecrets }}
+      imagePullSecrets:
+      - name: {{ .Values.imagePullSecret }}
+{{ end }}
+      containers:
+      - image: {{.Values.kafka.schemaRegistry.image.repository}}
+        name: laasv2-schema-registry
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+          requests:
+            cpu: "0.3"
+            memory: "512Mi"
+        env:
+          - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+            valueFrom:
+              configMapKeyRef:
+                name: util-config
+                key: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
+          - name: SCHEMA_REGISTRY_HOST_NAME
+            value: registry-0-schema
+          - name: SCHEMA_REGISTRY_LISTENERS
+            value: http://0.0.0.0:8081
+          - name: SCHEMA_REGISTRY_DEBUG
+            value: "true"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: laasv2-schema-registry
+spec:
+  type: ClusterIP
+  selector:
+    app: laasv2-schema-registry
+  ports:
+  - name: tcp-8081
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
