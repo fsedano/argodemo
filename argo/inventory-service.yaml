@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: api_service
+  name: inv-service
   namespace: argocd
 spec:
   destination:
