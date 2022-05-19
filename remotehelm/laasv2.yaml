@@ -19,7 +19,7 @@ spec:
           enable: false
         traefik:
           enable: false
-    targetRevision: add_provisioner
+    targetRevision: e38e4b5ba6a8d33a18ad6bfec5d3d16f932b0afc
   syncPolicy:
     automated:
       prune: true
