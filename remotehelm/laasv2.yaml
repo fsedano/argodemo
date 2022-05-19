@@ -17,7 +17,7 @@ spec:
         pgStorageClass: default
         gateway:
           enable: false
-        traefik
+        traefik:
           enable: false
     targetRevision: HEAD
   syncPolicy:
