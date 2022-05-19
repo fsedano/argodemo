@@ -6,7 +6,7 @@ testUtils:
 appPrefix: laasv2e2e
 pgDatabasesToCreate: laasv2a
 pgSchemasToCreate: userpreference,reservation,inventory,permission
-pgStorageClass: standard
+pgStorageClass: default
 useImagePullSecrets: false
 imagePullSecret: dockerhub-cisco-registry-secret
 postgres:
