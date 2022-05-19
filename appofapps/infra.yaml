@@ -11,13 +11,13 @@ spec:
     namespace: laasv2
   project: default
   source:
-    chart: helm/infra
+    chart: helms/infra
     helm:
       values: |
         pushgateway:
           enabled: false
-    repoURL: https://wwwin-github.cisco.com/ngdevx-taas/laasv2_e2e.git
-    targetRevision: 13.0.2
+    repoURL: https://harbor-devx-swiss.cisco.com/
+    targetRevision: 0.1.0
   syncPolicy:
     automated:
       prune: true
