@@ -4,7 +4,7 @@ testUtils:
   image:
     repository: harbor-devx-swiss.cisco.com/laasv2/e2e_utils:dev-latest
 appPrefix: laasv2e2e
-pgDatabasesToCreate: laasv2
+pgDatabasesToCreate: laasv2a
 pgSchemasToCreate: userpreference,reservation,inventory,permission
 pgStorageClass: standard
 useImagePullSecrets: false
