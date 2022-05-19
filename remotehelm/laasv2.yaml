@@ -19,7 +19,7 @@ spec:
           enable: false
         traefik:
           enable: false
-    targetRevision: HEAD
+    targetRevision: add_provisioner
   syncPolicy:
     automated:
       prune: true
