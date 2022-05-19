@@ -15,6 +15,10 @@ spec:
     helm:
       values: |
         pgStorageClass: default
+        gateway:
+          enable: false
+        traefik
+          enable: false
     targetRevision: HEAD
   syncPolicy:
     automated:
