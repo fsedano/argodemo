@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kafka
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: kafka
+    repoURL: https://bitnami-labs.github.io/kafka
+    targetRevision: 16.2.13
+    helm:
+      releaseName: kafka
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: deploy1
