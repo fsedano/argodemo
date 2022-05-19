@@ -19,7 +19,7 @@ spec:
           enable: false
         traefik:
           enable: false
-    targetRevision: 868d8ae7fca515da17c0c49f0f1d7953d1930914
+    targetRevision: 4316523688136003d89420d33eda3a774181e25e
   syncPolicy:
     automated:
       prune: true
