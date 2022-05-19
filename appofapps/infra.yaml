@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: laasv2
+  project: default
+  source:
+    chart: helm/infra
+    helm:
+      values: |
+        pushgateway:
+          enabled: false
+    repoURL: https://wwwin-github.cisco.com/ngdevx-taas/laasv2_e2e.git
+    targetRevision: 13.0.2
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true    
