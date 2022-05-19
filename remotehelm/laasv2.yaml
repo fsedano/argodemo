@@ -19,6 +19,9 @@ spec:
           enable: false
         traefik:
           enable: false
+        kafka:
+          server: 
+            url: kafka.deploy1
     targetRevision: 9b09551f8e2c9ad8fe4d9b43a3026b87b8f1f50f
   syncPolicy:
     automated:
