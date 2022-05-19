@@ -12,10 +12,10 @@ spec:
     helm:
       releaseName: redis
       parameters:
-          global:
-            imageRegistry: dockerhub.cisco.com/docker.io
-          replica:
-            replicaCount: 0
+          - name: global.imageRegistry
+            value: dockerhub.cisco.com/docker.io
+          - name: replica.replicaCount
+            value: 0
   destination:
     server: "https://kubernetes.default.svc"
     namespace: deploy1
