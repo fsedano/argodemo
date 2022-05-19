@@ -1,5 +1,3 @@
-helm install -n ${K8S_NS} redis bitnami/redis --set global.imageRegistry=dockerhub.cisco.com/docker.io --set global.storageClass=local-path --set replica.replicaCount=0 &
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
